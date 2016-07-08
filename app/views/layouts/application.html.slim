@@ -49,8 +49,9 @@ html lang="en"
           .col-md-2
             ul
               li LATEST
-              li ~
-          .col-md-2
+              - @recent_albums.each do |al|
+                li= al.name
+        .col-md-2
             ul
               li OUR TEAM
               li= link_to "Daren", "/"
