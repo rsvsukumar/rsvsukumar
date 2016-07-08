@@ -36,6 +36,10 @@ class AlbumsController < ApplicationController
     respond_with(@album)
   end
 
+  def newest
+    @album = Album.order('released_on desc').recent.first
+  end
+
   private
     def set_album
       @album = Album.find(params[:id])
