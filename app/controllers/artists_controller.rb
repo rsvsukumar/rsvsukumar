@@ -4,7 +4,8 @@ class ArtistsController < ApplicationController
   respond_to :html, :json
 
   def index
-    @artists = Artist.all
+    ar_names = Artist.all.map(&:name).uniq
+    @artists =  Artist.where("name in(?)", ar_names)
     respond_with(@artists)
   end
 
