@@ -22,13 +22,13 @@ class PublishersController < ApplicationController
 
   def create
     @publisher = Publisher.new(publisher_params)
-    @publisher.save
+    @publisher.save!
     respond_with(@publisher)
   end
 
   def update
     @publisher.update(publisher_params)
-    respond_with(@publisher)
+    redirect_to publisher_path(@publisher)
   end
 
   def destroy

@@ -25,6 +25,7 @@ group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'faker'
+  gem 'factory_girl_rails'
   gem 'quiet_assets'
 end
 

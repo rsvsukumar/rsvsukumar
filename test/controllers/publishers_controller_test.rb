@@ -3,6 +3,7 @@ require 'test_helper'
 class PublishersControllerTest < ActionController::TestCase
   setup do
     @publisher = publishers(:one)
+
   end
 
   test "should get index" do
@@ -17,8 +18,8 @@ class PublishersControllerTest < ActionController::TestCase
   end
 
   test "should create publisher" do
-    assert_difference('Publisher.count') do
-      post :create, publisher: { address: @publisher.address, city: @publisher.city, name: @publisher.name, phone: @publisher.phone, state: @publisher.state, url: @publisher.url, zip: @publisher.zip }
+    assert_difference( 'Publisher.count', 1) do
+      post :create,  publisher: FactoryGirl.attributes_for(:publisher)
     end
 
     assert_redirected_to publisher_path(assigns(:publisher))
