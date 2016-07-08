@@ -4,7 +4,7 @@ class AlbumsController < ApplicationController
   respond_to :html, :json
 
   def index
-    @albums = Album.recent
+    @albums = Album.includes(:publisher).recent
     respond_with(@albums)
   end
 
