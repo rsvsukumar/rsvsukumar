@@ -37,3 +37,7 @@
    width: 100%;
    color: #fff;
  }
+
+thead.header{
+    background-color: #F0F8FF
+}
