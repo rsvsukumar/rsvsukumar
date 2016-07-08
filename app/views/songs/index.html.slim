@@ -16,4 +16,4 @@ table.table.table-striped
         td= link_to song.name, song
         td= song.album.name
         td= song.artist.name
-
+        td= link_to 'Delete', song, method: "delete", remote: true, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger'
