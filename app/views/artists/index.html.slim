@@ -3,13 +3,37 @@
     .pull-right
       = link_to "New", new_artist_path, class: 'btn btn-primary'
     | Artists
-  
+
 table.table.table-striped
   thead
     tr
+      th picture
       th name
   tbody
     - @artists.each do |artist|
       tr
+        - if artist.artist_profile.present?
+          td= link_to image_tag(artist.artist_profile.thumbnail) , artist
         td= link_to artist.name, artist
 
+      - @artists.each do |art|
+  javascript:
+    $.ajax({
+      url: 'https://randomuser.me/api/',
+      dataType: 'html',
+      success: function(data){
+        var parse = JSON.parse(data)
+        $.ajax({
+          url: 'artists/update_data',
+          dataType: 'html',
+          data: { result: parse, id: #{art.id} }
+        });
+
+      }
+    });
+
+// - @artists.each_slice(3).each do |artist_array|
+  .row
+    - artist_array.each do |artist|
+      .col-md-4
+        = link_to image_tag("https://randomuser.me/api/portraits/thumb/men/80.png"), artists_path(artist)

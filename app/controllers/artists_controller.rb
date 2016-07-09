@@ -37,6 +37,29 @@ class ArtistsController < ApplicationController
     respond_with(@artist)
   end
 
+  def update_data
+    data = params[:result][:results].first[1]
+    @artist = Artist.find(params[:id])
+    gender = data["gender"]
+    name = data["name"]
+    title = name["title"]
+    large = data["picture"]["large"]
+    medium = data["picture"]["medium"]
+    thumbnail = data["picture"]["thumbnail"]
+
+    unless @artist.artist_profile.present?
+      @artist_profile = @artist.build_artist_profile
+      @artist_profile.title =  title
+      @artist_profile.gender =  gender
+      @artist_profile.large =  large
+      @artist_profile.medium =  medium
+      @artist_profile.thumbnail =  thumbnail
+      @artist_profile.save
+    end
+
+    render json: {}
+  end
+
   private
     def set_artist
       @artist = Artist.find(params[:id])

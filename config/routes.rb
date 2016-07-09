@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :artists
+  resources :artists  do
+    collection do
+      get :update_data
+    end
+  end
   resources :songs
   resources :albums  do
     collection do
