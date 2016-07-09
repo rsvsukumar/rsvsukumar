@@ -16,7 +16,7 @@ table.table.table-striped
           td= link_to image_tag(artist.artist_profile.thumbnail) , artist
         td= link_to artist.name, artist
 
-      - @artists.each do |art|
+- @artists.each do |art|
   javascript:
     $.ajax({
       url: 'https://randomuser.me/api/',
